@@ -1,0 +1,62 @@
+Ante-proyecto de “Informática II”
+Cerramiento Inteligente para impresoras 3D - Smart-Enclosure I3D
+
+Andres Pioli Zahler, 83954 - pioliandres94@gmail.com
+Lautaro Medrán, 83278 - lautaromed1320@gmail.com
+Maldonado, Mauricio Abel, 84024 - maurimaldonado6@gmail.com
+
+Motivación
+Actualmente en el mercado hay varios modelos de cerramientos para las impresoras, pero no satisfacen nuestras necesidades, ya sea porque son básicas o tienen un costo muy elevado. Por ende, proponemos el desarrollo de un producto que satisfaga todas las necesidades de un maker y sea más rentable, pudiendo así, imprimirse algunas partes fundamentales de este.
+
+Problema
+El problema principal en impresoras de bajo costo y sin cerramiento es que la calidad del producto obtenido al terminar la impresión se ve afectada por diversos factores, sobre todo ambientales, por ejemplo: humedad, temperatura, corrientes de aire y polvo. Así mismo la impresora se va deteriorando al estar expuesta a estos factores.
+
+Solución
+Para resolver la problemática antes planteada se propone el desarrollo de un equipo de cerramiento inteligente, cuyo diseño preliminar puede verse en la Figura 1.
+ 
+El cerramiento inteligente permitirá 
+Evitar failed prints: ya que al mantener alejadas las corrientes de aire y los cambios de temperatura se evitarían las mismas.
+Plazos de mantenimiento más extendidos: Se evitará el ingreso de polvo a las partes mecánicas de la impresora y con esto tendrán mayor durabilidad las partes mecánicas.
+Facilitar el transporte de la impresora 3D: Ya que se evitarían los despieces innecesarios de la máquina y con esto la pérdida de elementos que la conforman. Ya que para transportarla en condiciones ideales se procedería a su desarme y esto no es conveniente.
+Reducir el ruido: Con esto nos referimos al ruido ocasionado por los motores PaP (PASO A PASO) al realizar movimientos en base a frecuencias suelen hacer ruidos molestos.
+Organización:  Con un sitio adecuado donde dejar las herramientas empleadas para la terminación de la pieza, obtendremos un espacio de trabajo más ordenado y de esta forma evitaremos accidentes tanto mecánicos hacia la máquina y herramientas como hacia el operario de la misma.
+Evitar mal olor y reducir la dispersión de micropartículas en el aire: Algunos materiales como el POM o Acetal, ABS, Nylon 6, Nylon 12 y filamentos con agregados de fibra de carbono desprenden partículas que son peligrosas al ingresar al sistema respiratorio y por ende si no se cuenta con un lugar de trabajo aislado al entorno del hogar es bastante molesto.
+Mostrar por el Display: Todos los datos recopilados por el cerramiento. 
+
+
+Figura 1: Render de diseño preliminar del cerramiento inteligente.
+
+
+Objetivos 
+El objetivo del presente proyecto es desarrollar un cerramiento en base a una impresora 3D, para mejorar los aspectos anteriormente mencionados, el mismo está orientado a makers que posean una (impresora 3D), y será posible su fabricación por el método DIY (do it yourself)  o adquiriendo un modelo prefabricado. El desarrollo del mismo incluye también un control electrónico y su correspondiente programa que permite personalizar el funcionamiento del cerramiento.
+
+Requerimientos técnicos
+El prototipo del cerramiento a desarrollar tendrá un tamaño de 750 mm de alto, 600 mm de ancho y 600 mm de largo. Este tamaño resulta adecuado para albergar gran parte de las impresoras disponibles en el mercado local. Cabe aclarar que el tamaño del cerramiento puede ser modificado para adaptarse a otras impresoras de mayor o menor tamaño, que irá dentro del cerramiento. La cual puede ser modificada en su fabricación para distintos tamaños de impresoras. El programa de la electrónica que controla del cerramiento va a estar exclusivamente diseñado para Arduino, el cual tiene su propio lenguaje de programación (basado en C y C++). Así mismo de forma opcional se podrá conectar a la PC mediante puerto serie con el cual se podrá leer los datos recopilados y poder ajustar los parámetros de funcionamiento del cerramiento inteligente. 
+
+
+
+
+Diagrama en bloques tentativo
+
+La siguiente imagen muestra los dispositivos de entrada/salida conectados al microcontrolador Atmega328p. Primero tenemos el bloque de entrada donde se encuentran todos los sensores, teclados, switches y dispositivos de entrada. Todo esto lo procesa el microcontrolador Atmega328p el cual le da la orden de actuar a las distintas partes ya sean coolers, LEDs, y mostrar información a través de un display LCD.
+
+
+
+
+Otras Consideraciones
+Componentes:
+Arduino uno.
+Sensor de temperatura.
+Sensor de humedad.
+Tira de leds para iluminación.
+Coolers
+Switches ON/OFF
+Leds
+Resistencias
+Caja fabricada de madera MDF 
+Lámina de pet 2mm de espesor para puerta y techo.
+Piezas impresas en 3D.
+Display LCD.
+Pcb para independizar el Atmega328 del arduino uno en sí.
+
+
