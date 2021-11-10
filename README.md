@@ -1,2 +1,2 @@
-# SmarEnclosureI3D
+# SmartEnclosureI3D
 Cerramiento inteligente para impresoras 3d 
