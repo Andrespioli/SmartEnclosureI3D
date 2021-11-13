@@ -1,0 +1,102 @@
+
+//-------------------------------------------------- CONFIGURACION DE DISPLAY 16X2 ------------------------------------------------------------------------------
+#include <Wire.h> 
+#include <LiquidCrystal_I2C.h>
+//Creamos el objeto lcd con la dirección 0x3F, 16 columnas y 2 filas
+LiquidCrystal_I2C lcd(0x3F,16,2); 
+
+//-------------------------------------------------- CONFIGURACION DE TECLADO MATRICIAL -------------------------------------------------------------------------
+#include <Keypad.h>
+const byte rowsCount = 4;
+const byte columsCount = 4;
+const byte rowPins[rowsCount] = { 11, 10, 9, 8 };
+const byte columnPins[columsCount] = { 7, 6, 5, 4 };
+char keys[rowsCount][columsCount] = {
+   { '1','2','3', 'A' },
+   { '4','5','6', 'B' },
+   { '7','8','9', 'C' },
+   { '#','0','*', 'D' }
+};
+Keypad keypad = Keypad(makeKeymap(keys), rowPins, columnPins, rowsCount, columsCount);
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+char tecla;
+
+char modoManual[4]={'1','2','3'};
+char modoAutom[4] ={'4','5','6'};
+char frenoEmer[4]={'7','8','9'};
+char modoTest[4]={'0','0','0'};
+ 
+char piv[4];
+int i=0;
+
+//--------------------------------------------------------------------   OBJETOS  ------------------------------------------------------------------------------------
+class ModoAutomatico{
+  private:
+      int t_max;
+      int t_min;
+  public:
+      ModoAutomatico();
+      void setParametros(int,int);
+      void mostrarParametros() const;
+};
+
+ModoAutomatico::ModoAutomatico(){
+  t_max = 26;
+  t_min = 18;
+}
+
+void ModoAutomatico::setParametros(  ){
+  
+}
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+void setup() {
+  Serial.begin(9600);
+  lcd.init();//Inicializamos el display
+  lcd.backlight();//Encendemos la luz de fondo.
+  pinMode(12,OUTPUT);
+  digitalWrite(12,HIGH);
+}
+ 
+void loop() {
+  lcd.setCursor(0, 0);// Posicionamos el curson en  columna 0, fila 0
+    tecla = keypad.getKey(); //Guardamos un char en la variable tecla
+    lcd.setCursor(0,0);
+    lcd.print("Ingrese el modo:");
+  if(tecla){ //Si tecla es diff a null
+    lcd.setCursor(i,1);
+    piv[i] = tecla;
+    lcd.print(tecla);
+    i++;
+}
+  if(i == 3){
+     lcd.setCursor(0,1);
+   
+    if(! strcmp(piv,modoTest) ){
+      lcd.print("Modo testeo.");
+      delay(2000);
+      lcd.clear();
+      }
+      else if(! strcmp(piv, modoManual) ){
+          lcd.print("Modo manual.");
+           delay(2000);
+           lcd.clear();
+           }else if(! strcmp(piv, modoAutom) ){
+                lcd.print("Modo Autom.");
+                delay(2000);
+                lcd.clear();
+            }else if(!strcmp(piv, frenoEmer)){
+                lcd.print("Freno emergencia.");
+                delay(2000);
+                lcd.clear();
+            }else{
+                lcd.print("Modo incorrecto.");
+                lcd.print("Vuelva a intentar.");
+                delay(2000);
+                lcd.clear();
+                }
+ i=0;
+ }
+}
